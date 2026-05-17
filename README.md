@@ -60,3 +60,6 @@ contract Escrow {
     }
 }
 
+    function refund() public onlyEscrowAgent inState(State.Funded) {
+        payable(buyer).transfer(amount);
+        currentState = State.Refunded;
